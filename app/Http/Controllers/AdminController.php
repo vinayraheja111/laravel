@@ -12,8 +12,17 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->session()->has('Admin_login'))
+        {
+          $request->session()->put('Admin_login',$request->email);
+          return redirect('admin/dashbord');
+        }
+        else
+        {
+          return view('admin.login');
+        }
         return view('admin.login');
     }
 
@@ -37,7 +46,7 @@ class AdminController extends Controller
 
        if(isset($result['0']->id))
        {
-        $request->session()->put('Admin_login',true);
+        $request->session()->put('Admin_login',$request->email);
         $request->session()->put('Admin_id',$result['0']->id);
         return redirect('admin/dashbord');
        }
