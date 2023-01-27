@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CoupenController;
+use App\Http\Controllers\SizeController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,15 @@ Route::get('admin/coupen/mange_coupen',[CoupenController::class,'manage_coupen']
 Route::post('admin/coupen/store',[CoupenController::class,'store'])->name('cpn_str');
 Route::get('admin/delete/{id}',[CoupenController::class,'destroy'])->name('del_cpn');
 Route::get('admin/coupen/status/{type}/{id}',[CoupenController::class,'status'])->name('del_cpn');
+Route::get('admin/size',[SizeController::class,'index'])->name('size_dash');
+Route::get('admin/manage_size',[SizeController::class,'manage_size'])->name('manage_size');
+Route::post('admin/size/store',[SizeController::class,'store'])->name('size_str');
+Route::get('admin/size/{id}',[SizeController::class,'destroy'])->name('size_del');
+Route::get('admin/product',[ProductController::class,'index'])->name('prod_dash');
+Route::get('admin/manage_product',[ProductController::class,'manage_product'])->name('manage_product');
+Route::post('admin/product/store',[ProductController::class,'store'])->name('pro_str');
+Route::get('admin/product/{id}',[ProductController::class,'destroy'])->name('del_pro');
+Route::get('admin/product/status/{type}/{id}',[ProductController::class,'status'])->name('pro_status');
 Route::get('admin/logout',function(){
 	session()->forget('Admin_login');
 	session()->get('Admin_id');

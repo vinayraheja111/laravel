@@ -19,6 +19,14 @@
                             <a class="js-arrow" href="{{  route('cpn_dash')}}">
                                 <i class="fas fa-desktop"></i>Coupen</a>
                         </li>
+                        <li class="has-sub {{ (request()->is('admin/size')) ? 'active' : '' }}">
+                            <a class="js-arrow" href="{{  route('size_dash')}}">
+                                <i class="fas fa-desktop"></i>Size</a>
+                        </li>
+                         <li class="has-sub {{ (request()->is('admin/product')) ? 'active' : '' }}">
+                            <a class="js-arrow" href="{{  route('prod_dash')}}">
+                                <i class="fas fa-desktop"></i>Product</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
